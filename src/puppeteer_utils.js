@@ -239,6 +239,7 @@ const crawl = async opt => {
         const tracker = createTracker(page);
         try {
           await page.goto(pageUrl, { waitUntil: "load" });
+          await page.waitForNavigation();
         } catch (e) {
           e.message = augmentTimeoutError(e.message, tracker);
           throw e;
